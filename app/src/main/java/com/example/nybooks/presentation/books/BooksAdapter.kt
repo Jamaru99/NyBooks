@@ -11,11 +11,11 @@ import kotlinx.android.synthetic.main.item_book.view.*
 class BooksAdapter(
         private val books: List<Book>
 ) : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, view: Int): BooksViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_book, parent, false)
         return BooksViewHolder(itemView)
     }
-
 
     override fun getItemCount() = books.count()
 
