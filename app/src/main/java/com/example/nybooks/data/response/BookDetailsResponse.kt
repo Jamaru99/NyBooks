@@ -8,7 +8,7 @@ data class BookDetailsResponse (
     @Json(name = "title")
     val title: String,
 
-    @Json(name = "title")
+    @Json(name = "description")
     val description: String,
 
     @Json(name = "author")
