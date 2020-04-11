@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">NyBooks</string>
     <string name="books_title">Books</string>
+    <string name="details_title">Details</string>
+
+    <string name="error_401">401 não autorizado</string>
+    <string name="error_unexpected">Erro inesperado</string>
 </resources>

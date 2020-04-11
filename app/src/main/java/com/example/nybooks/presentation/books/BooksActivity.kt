@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nybooks.R
 import com.example.nybooks.presentation.details.DetailsActivity
 import kotlinx.android.synthetic.main.activity_books.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class BooksActivity : AppCompatActivity() {
 
@@ -17,12 +18,10 @@ class BooksActivity : AppCompatActivity() {
         setContentView(R.layout.activity_books)
 
         toolBarMain.title = getString(R.string.books_title)
-        setSupportActionBar(toolBarMain)
 
         val booksViewModel: BooksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
-
         booksViewModel.bookLiveData.observe(this, Observer {
-            it?.let { books ->
+            it?.let {books ->
                 with(recyclerBooks) {
                     layoutManager = LinearLayoutManager(this@BooksActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(false)
@@ -31,6 +30,14 @@ class BooksActivity : AppCompatActivity() {
                         this@BooksActivity.startActivity(intent)
                     }
                 }
+            }
+
+        })
+
+        booksViewModel.statusLiveData.observe(this, Observer {
+            viewFlipper.displayedChild = it.first
+            it.second?.let { errorMessage ->
+                textViewError.text = getString(errorMessage)
             }
         })
 

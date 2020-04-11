@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.nybooks.R
 import kotlinx.android.synthetic.main.activity_details.*
-
+import kotlinx.android.synthetic.main.toolbar.toolBarMain
 class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +18,10 @@ class DetailsActivity : AppCompatActivity() {
 
         txtTitle.text = title
         txtDescription.text = description
+
+        toolBarMain.title = getString(R.string.details_title)
+        setSupportActionBar(toolBarMain)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     companion object {
